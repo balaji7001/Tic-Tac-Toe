@@ -1,4 +1,6 @@
 🤖 Smart Tic-Tac-Toe
+
+
 A classic Tic-Tac-Toe game with a clean graphical user interface (GUI) built using Python's tkinter library. This project features two game modes: Player vs. Player and Player vs. a highly intelligent Computer opponent. The AI uses the minimax algorithm to play optimally, ensuring a challenging experience.
 
 ✨ Features
