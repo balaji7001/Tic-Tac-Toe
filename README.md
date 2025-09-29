@@ -1,9 +1,10 @@
-🤖 Smart Tic-Tac-Toe
+#🤖 Smart Tic-Tac-Toe
 
 
 A classic Tic-Tac-Toe game with a clean graphical user interface (GUI) built using Python's tkinter library. This project features two game modes: Player vs. Player and Player vs. a highly intelligent Computer opponent. The AI uses the minimax algorithm to play optimally, ensuring a challenging experience.
 
-✨ Features
+#✨ Features
+
 Two Game Modes:
 
 Player vs. Player (PvP): Play against a friend on the same computer.
@@ -16,7 +17,7 @@ Optimal AI: The computer player uses the minimax algorithm to make the best poss
 
 Status Updates: The game provides real-time updates on whose turn it is, who won, or if the game is a draw.
 
-📦 Packages Used
+#📦 Packages Used
 This project is built using only Python's standard library, so no external packages need to be installed. The necessary modules are included with any standard Python 3.x installation.
 
 tkinter: Python's standard GUI library for creating the game window and board.
@@ -28,12 +29,13 @@ Ensure Python is installed: You need to have Python 3.x installed on your system
 
 Clone the repository:
 
-Bash
+Bash :
 
 git clone https://github.com/balaji7001/Tic-Tac-Toe.git
 
+Bash :
 
-# cd smart-tic-tac-toe
+cd smart-tic-tac-toe
 
 🚀 Usage
 To run the game, simply navigate to the project directory and execute the Python script from your terminal:
