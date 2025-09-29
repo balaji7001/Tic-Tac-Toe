@@ -31,7 +31,9 @@ Clone the repository:
 Bash
 
 git clone https://github.com/balaji7001/Tic-Tac-Toe.git
-cd smart-tic-tac-toe
+
+
+# cd smart-tic-tac-toe
 
 🚀 Usage
 To run the game, simply navigate to the project directory and execute the Python script from your terminal:
