@@ -44,7 +44,7 @@ The game window will appear, allowing you to choose your game mode and start pla
 Opens in a new window
 learnbyexample.github.io
 
-<img width="911" height="918" alt="image" src="https://github.com/user-attachments/assets/8a983caf-1bef-44d6-8e22-f5aa148d47b2" />
+<img width="350" height="350" alt="image" src="https://github.com/user-attachments/assets/8a983caf-1bef-44d6-8e22-f5aa148d47b2" />
 
 
 🧠 The AI Explained (Minimax Algorithm)
