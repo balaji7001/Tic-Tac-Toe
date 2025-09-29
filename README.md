@@ -1,9 +1,9 @@
-#🤖 Smart Tic-Tac-Toe
+# 🤖Smart Tic-Tac-Toe
 
 
 A classic Tic-Tac-Toe game with a clean graphical user interface (GUI) built using Python's tkinter library. This project features two game modes: Player vs. Player and Player vs. a highly intelligent Computer opponent. The AI uses the minimax algorithm to play optimally, ensuring a challenging experience.
 
-#✨ Features
+# ✨ Features
 
 Two Game Modes:
 
@@ -17,7 +17,7 @@ Optimal AI: The computer player uses the minimax algorithm to make the best poss
 
 Status Updates: The game provides real-time updates on whose turn it is, who won, or if the game is a draw.
 
-#📦 Packages Used
+# 📦 Packages Used
 This project is built using only Python's standard library, so no external packages need to be installed. The necessary modules are included with any standard Python 3.x installation.
 
 tkinter: Python's standard GUI library for creating the game window and board.
@@ -37,21 +37,25 @@ Bash :
 
 cd smart-tic-tac-toe
 
-🚀 Usage
+# 🚀 Usage
 To run the game, simply navigate to the project directory and execute the Python script from your terminal:
 
 Bash
 
 python tic_tac_toe.py  # Make sure to save the filename as Tic-Tac-Toe
 
+
+
 The game window will appear, allowing you to choose your game mode and start playing.
 Opens in a new window
-learnbyexample.github.io
+
 
 <img width="350" height="350" alt="image" src="https://github.com/user-attachments/assets/8a983caf-1bef-44d6-8e22-f5aa148d47b2" />
 
 
-🧠 The AI Explained (Minimax Algorithm)
+# 🧠 The AI Explained (Minimax Algorithm)
+
+
 The AI in the Player vs. Computer mode is powered by the minimax algorithm. This is a recursive algorithm for choosing an optimal move for a player in a two-player game. It works by:
 
 Exploring possibilities: It simulates every possible move from the current board state.
