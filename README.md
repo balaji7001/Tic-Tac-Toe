@@ -26,7 +26,7 @@ Clone the repository:
 
 Bash
 
-git clone https://github.com/balaji7001/smart-tic-tac-toe.git
+git clone https://github.com/balaji7001/Tic-Tac-Toe.git
 cd smart-tic-tac-toe
 (Note: Replace your-username/smart-tic-tac-toe.git with your actual repository link.)
 
