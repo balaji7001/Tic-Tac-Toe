@@ -50,7 +50,8 @@ The game window will appear, allowing you to choose your game mode and start pla
 Opens in a new window
 
 
-<img width="350" height="350" alt="image" src="https://github.com/user-attachments/assets/8a983caf-1bef-44d6-8e22-f5aa148d47b2" />
+<img width="350" height="400" alt="image" src="https://github.com/user-attachments/assets/eeab1cd2-cfc7-4386-a1bd-4963ba99a49e" />
+
 
 
 # 🧠 The AI Explained (Minimax Algorithm)
