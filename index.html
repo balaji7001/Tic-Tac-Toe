@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tic Tac Toe </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Link to the external CSS file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🎮 Tic Tac Toe</h1>
+  <div class="controls">
+    <button id="pvpBtn">Player vs Player</button>
+    <button id="pvcBtn">Player vs Computer</button>
+    <button id="newGameBtn">New Game</button>
+  </div>
+  <div id="status">Select Game Mode</div>
+  <div class="board" id="board"></div>
+
+  <!-- 🎶 Sounds -->
+  <audio id="cellClick" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"></audio>
+  <audio id="btnClick" src="https://actions.google.com/sounds/v1/cartoon/pop.ogg"></audio>
+  <audio id="drawSound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"></audio>
+  <!-- 🏆 Winner Sound -->
+  <audio id="winSound" src="https://actions.google.com/sounds/v1/cartoon/magic_chime.ogg"></audio>
+  <!-- Popup -->
+  <div id="popup">
+    <div class="popup-content">
+      <h2 id="popupText">🎉 Winner! 🎉</h2>
+      <p>Congratulations!</p>
+      <button id="popupOkBtn">OK</button>
+    </div>
+  </div>
+
+  <!-- Link to the external JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>

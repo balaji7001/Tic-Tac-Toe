@@ -1,0 +1,76 @@
+body { 
+    font-family: Arial, sans-serif; 
+    background: linear-gradient(120deg, #4facfe, #00f2fe); 
+    height: 100vh; 
+    margin: 0; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    color: #fff; 
+}
+h1 { margin-bottom: 15px; }
+.controls { display: flex; gap: 10px; margin-bottom: 20px; }
+button { 
+    padding: 10px 16px; 
+    font-size: 14px;
+    font-weight: bold;
+    border: none; 
+    cursor: pointer;
+    border-radius: 6px;
+    background: #fff; 
+    color: #333; 
+    transition: 0.2s; 
+}
+button:hover { transform: scale(1.1); background: #ffee58; }
+#status { margin: 8px; font-size: 20px; font-weight: bold; }
+.board { 
+    display: grid; 
+    grid-template-columns: repeat(3, 100px); 
+    grid-template-rows: repeat(3, 100px); 
+    gap: 8px; 
+}
+.cell { 
+    width: 100px; 
+    height: 100px; 
+    background: #fff; 
+    color: #222;
+    font-size: 48px; 
+    font-weight: bold; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 10px; 
+    cursor: pointer; 
+}
+.cell.taken { cursor: not-allowed; background: #eee; }
+@keyframes winFlash { 
+    0%, 100% { background: #f4e197; color: #fff; } 
+    50% { background: #89f8b2; color: #000; } 
+}
+.winner { animation: winFlash 1s infinite alternate; }
+
+/* 👑 Popup Overlay */
+#popup { 
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: rgba(0,0,0,0.7); 
+    align-items: center; 
+    justify-content: center; 
+}
+.popup-content { 
+    background: #fff; 
+    color: #333; 
+    padding: 20px 40px;
+    border-radius: 10px; 
+    text-align: center;
+    animation: popIn 0.6s ease; 
+}
+@keyframes popIn { 
+    from { transform: scale(0.5); opacity: 0; } 
+    to { transform: scale(1); opacity: 1; } 
+}
