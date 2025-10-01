@@ -29,23 +29,37 @@ Ensure Python is installed: You need to have Python 3.x installed on your system
 
 Clone the repository:
 
-Bash :
+```bash
+python --version
+```
 
-git clone https://github.com/balaji7001/Tic-Tac-Toe.git
+### Installation
 
-Bash :
+1.  **Clone the repository**
+    Open your terminal and clone the repository using this command:
+    ```bash
+    git clone https://github.com/balaji7001/Tic-Tac-Toe.git
+    ```
 
-cd smart-tic-tac-toe
+2.  **Navigate to the project directory**
+    Change into the newly cloned folder:
+    ```bash
+    cd Tic-Tac-Toe
+    ```
 
-# 🚀 Usage
-To run the game, simply navigate to the project directory and execute the Python script from your terminal:
+---
 
-Bash
+## 🚀 Usage
 
-python tic_tac_toe.py  # Make sure to save the filename as Tic-Tac-Toe
+To run the game, simply execute the Python script from your terminal:
 
+```bash
+python tic_tac_toe.py
+```
 
+The game will start, and you will be prompted to make your move. Enjoy trying to force a draw against the AI!
 
+---
 The game window will appear, allowing you to choose your game mode and start playing.
 Opens in a new window
 
