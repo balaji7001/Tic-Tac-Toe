@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tic Tac Toe </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; 
+           background: linear-gradient(120deg,#4facfe,#00f2fe); 
+           height:100vh; margin:0; 
+           display:flex; flex-direction:column; 
+           justify-content:center; align-items:center; color:#fff; }
+    h1 { margin-bottom:15px; }
+    .controls { display:flex; gap:10px; margin-bottom:20px;}
+    button { padding:10px 16px; font-size:14px;font-weight:bold;
+             border:none; cursor:pointer;border-radius:6px;
+             background:#fff; color:#333; transition:0.2s; }
+    button:hover { transform:scale(1.1); background:#ffee58;}
+    #status { margin:8px; font-size:20px; font-weight:bold; }
+    .board { display:grid; grid-template-columns:repeat(3,100px); 
+             grid-template-rows:repeat(3,100px); gap:8px; }
+    .cell { width:100px; height:100px; background:#fff; color:#222;
+            font-size:48px; font-weight:bold; display:flex;
+            align-items:center; justify-content:center; 
+            border-radius:10px; cursor:pointer; }
+    .cell.taken { cursor:not-allowed; background:#eee; }
+    @keyframes winFlash { 0%,100%{background:#f4e197;color:#fff;} 
+                          50%{background:#89f8b2;color:#000;} }
+    .winner { animation:winFlash 1s infinite alternate; }
+
+    /* 👑 Popup Overlay */
+    #popup { display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+             background:rgba(0,0,0,0.7); align-items:center; justify-content:center; }
+    .popup-content { background:#fff; color:#333; padding:20px 40px;
+                     border-radius:10px; text-align:center;
+                     animation: popIn 0.6s ease; }
+    @keyframes popIn { from{ transform:scale(0.5); opacity:0;} to{ transform:scale(1); opacity:1;} }
+  </style>
+</head>
+<body>
+  <h1>🎮 Tic Tac Toe</h1>
+  <div class="controls">
+    <button onclick="buttonClick(); setMode('pvp')">Player vs Player</button>
+    <button onclick="buttonClick(); setMode('pvc')">Player vs Computer</button>
+    <button onclick="buttonClick(); resetGame()">New Game</button>
+  </div>
+  <div id="status">Select Game Mode</div>
+  <div class="board" id="board"></div>
+
+  <!-- 🎶 Sounds -->
+  <audio id="cellClick" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"></audio>
+  <audio id="btnClick" src="https://actions.google.com/sounds/v1/cartoon/pop.ogg"></audio>
+  <audio id="drawSound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"></audio>
+  <!-- 🏆 Winner Sound -->
+  <audio id="winSound" src="https://assets.mixkit.co/sfx/download/mixkit-video-game-win-2016.mp3"></audio>
+
+  <!-- Popup -->
+  <div id="popup">
+    <div class="popup-content">
+      <h2 id="popupText">🎉 Winner! 🎉</h2>
+      <p>Congratulations!</p>
+      <button onclick="closePopup()">OK</button>
+    </div>
+  </div>
+
+<script>
+  let board = Array(9).fill("");
+  let currentPlayer="X"; let gameMode=null; let gameOver=false;
+
+  const statusText=document.getElementById("status");
+  const boardDiv=document.getElementById("board");
+  const cellClick=document.getElementById("cellClick");
+  const btnClick=document.getElementById("btnClick");
+  const drawSound=document.getElementById("drawSound");
+  const winSound=document.getElementById("winSound");
+  const popup=document.getElementById("popup");
+  const popupText=document.getElementById("popupText");
+
+  // Unlock all audio after first click
+  document.addEventListener("click", function unlock(){
+    [cellClick,btnClick,drawSound,winSound].forEach(s=>{
+      s.play().then(()=>s.pause()).catch(()=>{});
+    });
+    document.removeEventListener("click", unlock);
+  });
+
+  for(let i=0;i<9;i++){
+    const c=document.createElement("div");
+    c.className="cell"; c.dataset.index=i;
+    c.onclick=()=>makeMove(i);
+    boardDiv.appendChild(c);
+  }
+
+  function buttonClick(){ btnClick.currentTime=0; btnClick.play().catch(()=>{}); }
+
+  function setMode(m){ gameMode=m; resetGame(); statusText.textContent=`${currentPlayer}'s turn`; }
+
+  function resetGame(){
+    board.fill(""); gameOver=false; currentPlayer="X";
+    document.querySelectorAll(".cell").forEach(c=>{c.textContent=""; c.className="cell";});
+    statusText.textContent=gameMode? `${currentPlayer}'s turn`: "Select Game Mode";
+    popup.style.display="none";
+  }
+
+  function makeMove(i){
+    if(board[i]==="" && !gameOver && gameMode){
+      board[i]=currentPlayer;
+      const c=document.querySelector(`.cell[data-index="${i}"]`);
+      c.textContent=currentPlayer; c.classList.add("taken");
+
+      cellClick.currentTime=0; cellClick.play().catch(()=>{});
+
+      if(checkWinner(currentPlayer)){
+        statusText.textContent=`${currentPlayer} wins!`; highlight(currentPlayer);
+
+        // 1️⃣ Show Popup
+        popup.style.display="flex";
+        popupText.textContent=`🎉 ${currentPlayer} WINS! 🎉`;
+
+        // 2️⃣ Play Winning Sound AFTER popup is displayed
+        winSound.currentTime=0;
+        winSound.play().catch(()=>{});
+
+        gameOver=true;
+      } else if(!board.includes("")){
+        statusText.textContent="It's a draw!";
+        drawSound.currentTime=0; drawSound.play().catch(()=>{});
+        gameOver=true;
+      } else {
+        currentPlayer = currentPlayer==="X"?"O":"X";
+        statusText.textContent=`${currentPlayer}'s turn`;
+      }
+    }
+  }
+
+  function checkWinner(p){
+    return [[0,1,2],[3,4,5],[6,7,8],
+            [0,3,6],[1,4,7],[2,5,8],
+            [0,4,8],[2,4,6]].some(comb=>comb.every(i=>board[i]===p));
+  }
+
+  function highlight(p){
+    [[0,1,2],[3,4,5],[6,7,8],
+     [0,3,6],[1,4,7],[2,5,8],
+     [0,4,8],[2,4,6]].forEach(comb=>{
+       if(comb.every(i=>board[i]===p)){
+         comb.forEach(i=>document.querySelector(`[data-index="${i}"]`).classList.add("winner"));
+       }
+     });
+  }
+
+  function closePopup(){ popup.style.display="none"; }
+</script>
+</body>
+</html>
