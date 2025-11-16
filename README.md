@@ -6,7 +6,7 @@ A classic Tic-Tac-Toe game with a clean graphical user interface (GUI) built usi
 # ✨ Features
 
 Two Game Modes:
-
+```https://tik-tat-toe.netlify.app/```
 Player vs. Player (PvP): Play against a friend on the same computer.
 
 Player vs. Computer (PvC): Test your skills against an intelligent AI that never makes a mistake.
